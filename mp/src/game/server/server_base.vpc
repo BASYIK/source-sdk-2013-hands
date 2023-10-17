@@ -214,6 +214,7 @@ $Project
 		$File	"ai_waypoint.h"
 		$File	"$SRCDIR\game\shared\ammodef.cpp"
 		$File	"$SRCDIR\game\shared\animation.cpp"
+		$File	"$SRCDIR\game\shared\basehand_shared.cpp"
 		$File	"$SRCDIR\game\shared\animation.h"
 		$File	"$SRCDIR\game\shared\apparent_velocity_helper.h"
 		$File	"$SRCDIR\game\shared\base_playeranimstate.cpp"

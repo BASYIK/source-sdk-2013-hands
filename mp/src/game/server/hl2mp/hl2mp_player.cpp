@@ -136,6 +136,8 @@ void CHL2MP_Player::Precache( void )
 	BaseClass::Precache();
 
 	PrecacheModel ( "sprites/glow01.vmt" );
+	PrecacheModel("models/weapons/c_arms.mdl");
+	PrecacheModel("models/weapons/c_arms_combine.mdl");
 
 	//Precache Citizen models
 	int nHeads = ARRAYSIZE( g_ppszRandomCitizenModels );
@@ -293,7 +295,7 @@ void CHL2MP_Player::Spawn(void)
 	PickDefaultSpawnTeam();
 
 	BaseClass::Spawn();
-	
+
 	if ( !IsObserver() )
 	{
 		pl.deadflag = false;
@@ -559,6 +561,11 @@ void CHL2MP_Player::PreThink( void )
 void CHL2MP_Player::PostThink( void )
 {
 	BaseClass::PostThink();
+
+	const char* szModelName = NULL;
+	szModelName = engine->GetClientConVarValue(engine->IndexOfEdict(edict()), "cl_hands");
+	PrecacheModel(szModelName);
+	GetViewModel(1)->SetModel(szModelName);
 	
 	if ( GetFlags() & FL_DUCKING )
 	{
